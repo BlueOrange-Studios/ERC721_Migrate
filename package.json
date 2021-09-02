@@ -1,0 +1,19 @@
+{
+  "name": "funnel",
+  "version": "0.0.1",
+  "description": "NFT minting made simple",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlueOrange-Studios/Funnel.git"
+  },
+  "author": "James Youngchae Chee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlueOrange-Studios/Funnel/issues"
+  },
+  "homepage": "https://github.com/BlueOrange-Studios/Funnel#readme"
+}
