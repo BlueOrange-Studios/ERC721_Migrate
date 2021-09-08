@@ -1,8 +1,8 @@
 {
-  "name": "boiler_plate",
-  "version": "1.0.0",
-  "description": "boiler plating",
-  "main": "",
+  "name": "etherfunnel",
+  "version": "0.0.2",
+  "description": "API for frontend to communicate with Ethereum Blockchain",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --mode development",
     "dev": "webpack --watch --mode development",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "some-repo-url"
+    "url": "https://github.com/BlueOrange-Studios/Funnel"
   },
   "keywords": [],
-  "author": "",
+  "author": "James Youngchae Chee",
   "license": "",
   "bugs": {},
   "homepage": "",
