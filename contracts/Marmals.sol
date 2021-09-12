@@ -24,7 +24,7 @@ contract Marmal is Ownable, ERC721{
 
     constructor() ERC721("Marmal", "MRML") {}
 
-    function get_token_id(uint32 long, uint32 lat, uint32 depth) pure internal returns(uint256) {
+    function getTokenId(uint32 long, uint32 lat, uint32 depth) pure internal returns(uint256) {
         uint32 long_max = 999;
         uint32 lat_max = 999;
         uint32 depth_max = 999;
@@ -35,7 +35,7 @@ contract Marmal is Ownable, ERC721{
 
     // mint MRML token to ethereum blockchain
     function mint(uint32 long, uint32 lat, uint32 depth, string memory name, string memory kind) internal {
-        uint256 tokenId = get_token_id(long, lat, depth);
+        uint256 tokenId = getTokenId(long, lat, depth);
 
         // store id to metadata mapping
         id_to_mrml[tokenId] = MetaData(name, kind, Coord(long, lat, depth));
@@ -43,8 +43,29 @@ contract Marmal is Ownable, ERC721{
         _safeMint(msg.sender, tokenId);
     }
 
-    // TODO claim MRML by sender
+    // claim MRML by sender
     function claim(uint32 long, uint32 lat, uint32 depth, string calldata name, string calldata kind) external payable {
+        require(msg.value == 0.015 ether, "claiming a Marmal costs 0.015 ether");
 
+        mint(long, lat, depth, name, kind);
+        payable(owner()).transfer(0.015 ether);
+    }
+
+    function ownerOf(uint32 long, uint32 lat, uint32 depth) public view returns(address) {
+        return ownerOf(getTokenId(long, lat, depth));
+    }
+
+    function nameOf(uint256 tokenId) public view returns(string memory) {
+        require(_exists(tokenId), "token is not minted");
+
+        MetaData memory mrml = id_to_mrml[tokenId];
+        return mrml.name;
+    }
+
+    function kindOf(uint256 tokenId) public view returns(string memory) {
+        require(_exists(tokenId), "token is not minted");
+
+        MetaData memory mrml = id_to_mrml[tokenId];
+        return mrml.kind;
     }
 }
