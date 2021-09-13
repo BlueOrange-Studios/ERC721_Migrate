@@ -1,10 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'funnel') + '/index.tsx',
+    entry: path.resolve(__dirname, 'funnel') + '/index.ts',
+    target: 'node',
     module: {
         rules: [{
-            test: /\.tsx?$/,
+            test: /\.ts?$/,
             use: [{
                 loader: 'ts-loader',
                 options: {

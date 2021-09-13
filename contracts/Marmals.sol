@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Marmal is Ownable, ERC721{
 
+    // TODO add tokenURI to pass valid marmal
+
     // Coordinate of where a Marmal is found
     struct Coord {
         uint32 long; // longitude
@@ -29,7 +31,8 @@ contract Marmal is Ownable, ERC721{
         uint32 lat_max = 999;
         uint32 depth_max = 999;
 
-        require(long>=0 &&lat>=0 &&depth>=0 &&long<=long_max&&lat<=lat_max&&depth<=depth_max);
+        require(long>=0 &&lat>=0 &&depth>=0 &&long<=long_max&&lat<=lat_max&&depth<=depth_max,
+        "longitude, latitude, depth should be in range (>=0 && <1000)");
         return uint256(long) * (10**6) + uint256(lat) * (10**3) + uint256(depth);
     }
 
