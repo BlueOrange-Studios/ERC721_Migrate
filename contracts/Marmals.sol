@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Marmal is Ownable, ERC721{
 
-    // TODO add tokenURI to pass valid marmal
-
     // Coordinate of where a Marmal is found
     struct Coord {
         uint32 long; // longitude
